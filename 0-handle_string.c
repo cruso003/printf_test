@@ -8,7 +8,7 @@
  * @count: A pointer to the count of characters written.
  * Return: 1.
  */
-int handle_char(va_list args, *count)
+int handle_char(va_list args, int *count)
 {
 	char _char = (char)va_arg(args, int);
 
