@@ -19,6 +19,23 @@ int handle_format_specifier(const char format_char, va_list args, int *count)
 			return (handle_char(args, count));
 		case 's':
 			return (handle_string(args, count));
+		case 'd':
+		case 'i':
+			return (handle_int(args, count));
+		case 'b':
+			return (handle_bin(args, count));
+		case 'u':
+			return (handle_unsigned_int(args, count));
+		case 'o':
+			return (handle_octal(args, count));
+		case 'x':
+			return (handle_hexadecimal(args, count, 0));
+		case 'X':
+			return (handle_hexadecimal(args, count, 1));
+		case 'S':
+			return (handle_non_printable(args, count));
+		case 'p':
+			return (handle_addr(args, count));
 		default:
 			write(1, "%r", 3);
 			*count += 3;

@@ -6,8 +6,9 @@
 
 /**
  * handle_int - handling integers specifiers d and i
- * @count: integer count
- * @Return: len
+ * @args: argument list
+ * @count: integer pointer count.
+ * Return: len
  */
 int handle_int(va_list args, int *count)
 {
@@ -15,7 +16,7 @@ int handle_int(va_list args, int *count)
 	char int_str[BUFFER_SIZE];
 	int len = snprintf(int_str, sizeof(int_str), "%d", num);
 
-	while(1, int_str, len);
+	write(1, int_str, len);
 	*count += len;
 	return (len);
 }
