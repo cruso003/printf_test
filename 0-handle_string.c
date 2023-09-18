@@ -10,14 +10,13 @@
 int handle_char(va_list args)
 {
 	char _char = (char)va_arg(args, int);
-	
+
 	_putchar(_char);
 	return (1);
 }
 /**
  * handle_string - Helper function to write a string to stdout.
  * @args: The argument list.
- * @count: A pointer to the count of written characters.
  * Return: len.
  */
 int handle_string(va_list args)
