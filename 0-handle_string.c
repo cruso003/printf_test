@@ -28,10 +28,10 @@ int handle_string(va_list args)
 	if (!str)
 	{
 		str = "(null)";
-		while (str[len] != '\0')
+		len = _strlen(str);
+		for (i = 0; i < len; i++)
 		{
-			_putchar(str[len]);
-			len++;
+			_putchar(str[i]);
 		}
 	}
 	else
