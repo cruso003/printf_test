@@ -17,6 +17,7 @@ int handle_char(va_list args)
 /**
  * handle_string - Helper function to write a string to stdout.
  * @args: The argument list.
+ * @count: Argument count.
  * Return: len.
  */
 int handle_string(va_list args, int *count)
@@ -29,14 +30,14 @@ int handle_string(va_list args, int *count)
 		str = "(null)";
 	}
 	for (len = 0; str[len]; len++)
+	{
+		_putchar(str[len]);
+		if (count != NULL)
 		{
-			_putchar(str[len]);
-			if (count != NULL)
-			{
-				(*count)++;
-			}	
+			(*count)++;
 		}
-		return (len);
+	}
+	return (len);
 }
 /**
  * handle_percent - Handles percent specifier by printing the ascii value
