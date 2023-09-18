@@ -17,24 +17,29 @@ int handle_char(va_list args)
 /**
  * handle_string - Helper function to write a string to stdout.
  * @args: The argument list.
- * @count: Argument count.
  * Return: len.
  */
-int handle_string(va_list args, int *count)
+int handle_string(va_list args)
 {
 	char *str = va_arg(args, char *);
 	int len;
+	int i;
 
 	if (!str)
 	{
 		str = "(null)";
-	}
-	for (len = 0; str[len]; len++)
-	{
-		_putchar(str[len]);
-		if (count != NULL)
+		len = _strlen(str);
+		for (i = 0; i < len; i++)
 		{
-			(*count)++;
+			_putchar(str[i]);
+		}
+	}
+	else
+	{
+		len = _strlen(str);
+		for (i = 0; i < len; i++)
+		{
+			_putchar(str[i]);
 		}
 	}
 	return (len);

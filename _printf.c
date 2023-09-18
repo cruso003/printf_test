@@ -23,7 +23,7 @@ int handle_format_specifier(const char format_char, va_list args, int *count)
 		case 'c':
 			return (handle_char(args));
 		case 's':
-			return (handle_string(args, count));
+			return (handle_string(args));
 		case '%':
 			return (handle_percent());
 		case 'd':
