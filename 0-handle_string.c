@@ -50,7 +50,7 @@ int handle_string(va_list args)
 */
 int handle_percent(void)
 {
-		_putchar(379);
+		_putchar(37);
 		return (1);
 }
 
