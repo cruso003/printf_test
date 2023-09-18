@@ -10,7 +10,7 @@
 int handle_char(va_list args)
 {
 	char _char = (char)va_arg(args, int);
-
+	
 	_putchar(_char);
 	return (1);
 }
@@ -22,14 +22,15 @@ int handle_char(va_list args)
 int handle_string(va_list args)
 {
 	char *str = va_arg(args, char *);
-	size_t len, i;
+	size_t len;
+	size_t i;
 
 	if (!str)
 	{
 		str = "(null)";
 		while (str[len] != '\0')
 		{
-			_putchar(str[len]);
+			_putchar(str[i]);
 			len++;
 		}
 	}
