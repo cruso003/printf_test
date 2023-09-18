@@ -13,11 +13,6 @@
  */
 int handle_format_specifier(const char format_char, va_list args, int *count)
 {
-	char temp_buffer[2];
-
-	temp_buffer[0] = '%';
-	temp_buffer[1] = format_char;
-
 	switch (format_char)
 	{
 		case 'c':
@@ -45,8 +40,8 @@ int handle_format_specifier(const char format_char, va_list args, int *count)
 			return (handle_addr(args, count));
 		default:
 			{
-				_putchar(temp_buffer[0]);
-				_putchar(temp_buffer[1]);
+				_putchar('%');
+				_putchar(format_char);
 				*count += 2;
 				return (*count);
 			}
