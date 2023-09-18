@@ -4,16 +4,14 @@
 #include <stdarg.h>
 /**
  * handle_char - Helper function to write a character to stdout.
- * @args: The argument list
- * @count: A pointer to the count of characters written.
+ * @args: The argument list.
  * Return: 1.
  */
-int handle_char(va_list args, int *count)
+int handle_char(va_list args)
 {
 	char _char = (char)va_arg(args, int);
-
+	
 	_putchar(_char);
-	(*count)++;
 	return (1);
 }
 /**
@@ -22,7 +20,7 @@ int handle_char(va_list args, int *count)
  * @count: A pointer to the count of written characters.
  * Return: len.
  */
-int handle_string(va_list args, int *count)
+int handle_string(va_list args)
 {
 	char *str = va_arg(args, char *);
 	size_t len;
@@ -31,20 +29,19 @@ int handle_string(va_list args, int *count)
 	if (!str)
 	{
 		str = "(null)";
-		for (i = 0; str[i] != '\0'; i++)
+		while (str[len] != '\0')
 		{
-			_putchar(str[i]);
+			_putchar(str[len]);
+			len++;
 		}
-		(*count) += i;
 	}
 	else
 	{
-		len = strlen(str);
+		len = _strlen(str);
 		for (i = 0; i < len; i++)
 		{
 			_putchar(str[i]);
 		}
-		(*count) += len;
 	}
 	return (len);
 }

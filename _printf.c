@@ -21,9 +21,9 @@ int handle_format_specifier(const char format_char, va_list args, int *count)
 	switch (format_char)
 	{
 		case 'c':
-			return (handle_char(args, count));
+			return (handle_char(args));
 		case 's':
-			return (handle_string(args, count));
+			return (handle_string(args));
 		case 'd':
 		case 'i':
 			return (handle_int(args, count));
