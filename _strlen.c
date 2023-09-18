@@ -4,9 +4,9 @@
  * @str: A pointer to type char.
  * Return: len (short for lenght).
  */
-size_t _strlen(const char *str)
+int _strlen(const char *str)
 {
-	size_t len;
+	int len;
 
 	for (len = 0; str[len] != '\0'; len++)
 		;
