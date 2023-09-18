@@ -14,6 +14,7 @@
 int handle_format_specifier(const char format_char, va_list args, int *count)
 {
 	char temp_buffer[2];
+
 	temp_buffer[0] = '%';
 	temp_buffer[1] = format_char;
 
@@ -23,9 +24,27 @@ int handle_format_specifier(const char format_char, va_list args, int *count)
 			return (handle_char(args, count));
 		case 's':
 			return (handle_string(args, count));
+		case 'd':
+		case 'i':
+			return (handle_int(args, count));
+		case 'b':
+			return (handle_bin(args, count));
+		case 'u':
+			return (handle_unsigned_int(args, count));
+		case 'o':
+			return (handle_octal(args, count));
+		case 'x':
+			return (handle_hexadecimal(args, count, 0));
+		case 'X':
+			return (handle_hexadecimal(args, count, 1));
+		case 'S':
+			return (handle_non_printable(args, count));
+		case 'p':
+			return (handle_addr(args, count));
 		default:
 			{
-				write(1, temp_buffer, 2);
+				_putchar(temp_buffer[0]);
+				_putchar(temp_buffer[1]);
 				*count += 2;
 				return (*count);
 			}
@@ -50,7 +69,7 @@ int _printf(const char *format, ...)
 			i++;
 			if (format[i] == '%')
 			{
-				write(1, &format[i], 1);
+				_putchar(format[i]);
 				count++;
 			}
 			else
@@ -60,7 +79,7 @@ int _printf(const char *format, ...)
 		}
 		else
 		{
-			write(1, &format[i], 1);
+			_putchar(format[i]);
 			count++;
 		}
 	}

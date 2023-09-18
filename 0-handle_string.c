@@ -13,6 +13,7 @@ int handle_char(va_list args, int *count)
 	char _char = (char)va_arg(args, int);
 
 	_putchar(_char);
+	(*count)++;
 	return (1);
 }
 /**
@@ -24,18 +25,26 @@ int handle_char(va_list args, int *count)
 int handle_string(va_list args, int *count)
 {
 	char *str = va_arg(args, char *);
-	int len;
+	size_t len;
+	size_t i;
 
 	if (!str)
 	{
-		write(1, "(null)", 6);
-		*count += 6;
+		str = "(null)";
+		for (i = 0; str[i] != '\0'; i++)
+		{
+			_putchar(str[i]);
+		}
+		(*count) += i;
 	}
 	else
 	{
 		len = strlen(str);
-		write(1, str, len);
-		*count += len;
+		for (i = 0; i < len; i++)
+		{
+			_putchar(str[i]);
+		}
+		(*count) += len;
 	}
 	return (len);
 }
