@@ -13,13 +13,35 @@
 int handle_unsigned_int(va_list args, int *count)
 {
 	unsigned int num = va_arg(args, unsigned int);
-	int num_digits = snprintf(NULL, 0, "%u", num);
-	char buffer[BUFFER_SIZE];
-	int len = snprintf(buffer, num_digits + 1, "%u", num);
+	int i, j, len = 0;
+	char buffer[BUFFER_SIZE], temp;
 
-	write(1, buffer, len);
-	*count += len;
-	return (*count);
+	if (num == 0)
+	{
+		buffer[0] = '0';
+		len = 1;
+	}
+	else
+	{
+		while (num > 0)
+		{
+			buffer[len] = '0' + (num % 10);
+			num /= 10;
+			len++;
+		}
+	}
+		for (i = 0, j = len - 1 ; i < j; i++, j--)
+		{
+			temp = buffer[i];
+			buffer[i] = buffer[j];
+			buffer[j] = temp;
+		}
+		for (i = 0; i < len; i++)
+		{
+			_putchar(buffer[i]);
+			(*count)++;
+		}
+		return (*count);
 }
 /**
  * handle_octal - Handles specifier for octal notation.
@@ -44,7 +66,7 @@ int handle_octal(va_list args, int *count)
 	}
 	for (i = index - 1; i >= 0; i--)
 	{
-		write(1, &octal_str[i], 1);
+		_putchar(octal_str[i]);
 		(*count)++;
 	}
 	return (*count);
@@ -60,17 +82,40 @@ int handle_octal(va_list args, int *count)
 int handle_hexadecimal(va_list args, int *count, int uppercase)
 {
 	unsigned int num = va_arg(args, unsigned int);
-		char hex_str[BUFFER_SIZE];
+	char hex_str[BUFFER_SIZE], temp;
+	int len = 0, i, j;
 
-	if (uppercase)
+	if (num == 0)
 	{
-		sprintf(hex_str, "%X", num);
+		hex_str[0] = '0';
+		len = 1;
 	}
 	else
 	{
-		sprintf(hex_str, "%x", num);
+		while (num > 0)
+		{
+			if (uppercase)
+			{
+				hex_str[len] = "0123456789ABCDEF"[num % 16];
+			}
+			else
+			{
+				hex_str[len] = "0123456789abcdef"[num % 16];
+			}
+			num /= 16;
+			len++;
+		}
 	}
-	write(1, hex_str, strlen(hex_str));
-	*count += strlen(hex_str);
-	return (*count);
+	for (i = 0, j = len - 1; i < j; i++, j--)
+	{
+		temp = hex_str[i];
+		hex_str[i] = hex_str[j];
+		hex_str[j] = temp;
+	}
+	for (i = 0; i < len; i++)
+	{
+		_putchar(hex_str[i]);
+		(*count)++;
+	}
+	return (len);
 }

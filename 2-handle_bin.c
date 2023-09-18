@@ -24,10 +24,9 @@ int handle_bin(va_list args, int *count)
 	{
 		bin_digits[index++] = '0';
 	}
-	write(1, &bin_digits[index - 1], 1);
 	for (i = index - 1; i >= 0; i--)
 	{
-		write(1, &bin_digits[i], 1);
+		_putchar(bin_digits[i]);
 		(*count) += 1;
 	}
 	return (*count);

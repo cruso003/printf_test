@@ -24,6 +24,8 @@ int handle_format_specifier(const char format_char, va_list args, int *count)
 			return (handle_char(args));
 		case 's':
 			return (handle_string(args));
+		case '%':
+			return (handle_percent());
 		case 'd':
 		case 'i':
 			return (handle_int(args, count));
@@ -67,15 +69,7 @@ int _printf(const char *format, ...)
 		if (format[i] == '%')
 		{
 			i++;
-			if (format[i] == '%')
-			{
-				_putchar(format[i]);
-				count++;
-			}
-			else
-			{
-				count += handle_format_specifier(format[i], args, &count);
-			}
+			count += handle_format_specifier(format[i], args, &count);
 		}
 		else
 		{
