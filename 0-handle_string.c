@@ -23,15 +23,15 @@ int handle_char(va_list args)
 int handle_string(va_list args)
 {
 	char *str = va_arg(args, char *);
-	size_t len;
-	size_t i;
+	int len, i;
 
 	if (!str)
 	{
 		str = "(null)";
-		for (i = 0; i < len; i++)
+		while (str[len] != '\0')
 		{
-			_putchar(str[i]);
+			_putchar(str[len]);
+			len++;
 		}
 	}
 	else
