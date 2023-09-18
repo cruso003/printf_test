@@ -19,30 +19,24 @@ int handle_char(va_list args)
  * @args: The argument list.
  * Return: len.
  */
-int handle_string(va_list args)
+int handle_string(va_list args, int *count)
 {
 	char *str = va_arg(args, char *);
 	int len;
-	int i;
 
 	if (!str)
 	{
 		str = "(null)";
-		len = _strlen(str);
-		for (i = 0; i < len; i++)
-		{
-			_putchar(str[i]);
-		}
 	}
-	else
-	{
-		len = _strlen(str);
-		for (i = 0; i < len; i++)
+	for (len = 0; str[len]; len++)
 		{
-			_putchar(str[i]);
+			_putchar(str[len]);
+			if (count != NULL)
+			{
+				(*count)++;
+			}	
 		}
-	}
-	return (len);
+		return (len);
 }
 /**
  * handle_percent - Handles percent specifier by printing the ascii value
