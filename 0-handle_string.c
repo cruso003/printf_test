@@ -12,8 +12,7 @@ int handle_char(va_list args, int *count)
 {
 	char _char = (char)va_arg(args, int);
 
-	write(1, &_char, 1);
-	(*count)++;
+	_putchar(_char);
 	return (1);
 }
 /**
