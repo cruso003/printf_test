@@ -22,7 +22,7 @@ int handle_char(va_list args)
 int handle_string(va_list args)
 {
 	char *str = va_arg(args, char *);
-	int len, i;
+	size_t len, i;
 
 	if (!str)
 	{

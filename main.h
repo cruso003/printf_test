@@ -4,7 +4,7 @@
 #include <unistd.h>
 #define BUFFER_SIZE 1024
 int _putchar(char c);
-int _strlen(const char *str);
+size_t _strlen(const char *str);
 int _printf(const char *format, ...);
 int handle_format_specifier(const char format_char, va_list args, int *count);
 int handle_string(va_list args);
