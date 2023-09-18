@@ -29,8 +29,8 @@ int handle_string(va_list args, int *count)
 
 	if (!str)
 	{
-		write(1, "(nil)", 5);
-		*count += 5;
+		write(1, "(null)", 6);
+		*count += 6;
 	}
 	else
 	{

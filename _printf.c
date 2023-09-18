@@ -13,6 +13,10 @@
  */
 int handle_format_specifier(const char format_char, va_list args, int *count)
 {
+	char temp_buffer[2];
+	temp_buffer[0] = '%';
+	temp_buffer[1] = format_char;
+
 	switch (format_char)
 	{
 		case 'c':
@@ -37,9 +41,11 @@ int handle_format_specifier(const char format_char, va_list args, int *count)
 		case 'p':
 			return (handle_addr(args, count));
 		default:
-			write(1, "%r", 3);
-			*count += 3;
-			return (*count);
+			{
+				write(1, temp_buffer, 2);
+				*count += 2;
+				return (*count);
+			}
 	}
 }
 /**
