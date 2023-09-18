@@ -45,12 +45,11 @@ int handle_string(va_list args)
 	return (len);
 }
 /**
- * handle_percent - Handles percent specifier by printing the ascii value
+ * handle_percent - Handles percent specifier
  * Return: 1.
 */
 int handle_percent(void)
 {
-		_putchar(37);
-		return (1);
+	_putchar('%');
+	return (1);
 }
-
