@@ -2,7 +2,7 @@
 #include <stdarg.h>
 #include <unistd.h>
 #include <stdio.h>
-#include <string.h
+#include <string.h>
 #include <stdlib.h>
 
 /**
@@ -13,7 +13,7 @@
  */
 int handle_non_printable(va_list args, int *count)
 {
-	char input = va_arg(args, char);
+	char *input = va_arg(args, char*);
 	char *output = (char *)malloc(strlen(input) * 4 + 1);
 	int i, j = 0;
 	char current_char;

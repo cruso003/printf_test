@@ -13,7 +13,7 @@
 int handle_unsigned_int(va_list args, int *count)
 {
 	unsigned int num = va_arg(args, unsigned int);
-	int num_digits = snfprint(NULL, 0, "%u", num);
+	int num_digits = snprintf(NULL, 0, "%u", num);
 	char buffer[BUFFER_SIZE];
 	int len = snprintf(buffer, num_digits + 1, "%u", num);
 
@@ -42,7 +42,7 @@ int handle_octal(va_list args, int *count)
 	{
 		octal_str[index++] = '0';
 	}
-	for (i = index - 1; i >= 0; i--;)
+	for (i = index - 1; i >= 0; i--)
 	{
 		write(1, &octal_str[i], 1);
 		(*count)++;
@@ -59,7 +59,7 @@ int handle_octal(va_list args, int *count)
  */
 int handle_hexadecimal(va_list args, int *count, int uppercase)
 {
-	unsigned int num = va_arg(args, unsigned int)
+	unsigned int num = va_arg(args, unsigned int);
 		char hex_str[BUFFER_SIZE];
 
 	if (uppercase)
@@ -68,7 +68,7 @@ int handle_hexadecimal(va_list args, int *count, int uppercase)
 	}
 	else
 	{
-		sprintf(hex_str, "%x", num)
+		sprintf(hex_str, "%x", num);
 	}
 	write(1, hex_str, strlen(hex_str));
 	*count += strlen(hex_str);
