@@ -5,7 +5,9 @@
 #include <limits.h>
 #include <stdio.h>
 #include <stdlib.h>
+
 #define BUFFER_SIZE 1024
+
 int _putchar(char c);
 int _strlen(const char *str);
 int handle_percent(void);
